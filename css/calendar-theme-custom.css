@@ -1,5 +1,5 @@
 .academic-calendar {
-  font-family: sans-serif;
+  font-family: "Ringside Narrow A", "Ringside Narrow B", sans-serif;
 }
 .calendar-title {
   display: none;
@@ -26,11 +26,28 @@
   -ms-grid-columns: 50% 50%;
   justify-content: space-between;
 }
+
 .year-text {
-  font-size: 80px;
   font-family: "Vitesse A", "Vitesse B", serif;
   color: #002e5d;
+  font-size: 85px;
+  line-height: 84px;
 }
+/* it is hidden below 1024px..  */
+/*@media screen and (max-width: 1023px) {*/
+  /*.year-text {*/
+    /*font-size: 75px;*/
+    /*line-height: 74px;*/
+  /*}*/
+/*}*/
+/*@media screen and (max-width: 767px) {*/
+    /*.year-text {*/
+    /*font-size: 60px;*/
+    /*line-height: 74px; // check if this messes stuff up*/
+  /*}*/
+/*}*/
+
+
 .calendar-buttons {
   text-align: right;
   margin: 1rem .5rem 2rem .5rem;
@@ -72,10 +89,10 @@
 .calendar-content {
   padding: 0;
 }
-.cal-month {
-  background-color: #002e5d;
-  font-size: 18px;
-}
+/*.cal-month {*/
+  /*background-color: #002e5d;*/
+  /*font-size: 18px;*/
+/*}*/
 .holiday-color {
   color: #002e5d;
   border-color: #002e5d;
@@ -105,7 +122,7 @@
   background-color: #002e5d;
   color: white;
   display: block;
-  font-family: Arial, sans-serif;
+  /*font-family: Arial, sans-serif;*/
   font-size: 16px;
   font-weight: 500;
   text-align: center;
@@ -203,19 +220,22 @@
   }
   .calendar-month td {
     padding: 0;
+    /*font-size: 12px;*/
   }
   .calendar-key {
     text-align: left;
   }
-  .key-item:first-of-type {
-    margin-left: 0;
-  }
-  .key-item-title {
-    font-size: 14px;
-  }
-  .key-item-table {
-    font-size: 10px;
-  }
+  /* these didn't exist in html*/
+  /*.key-item:first-of-type {*/
+    /*margin-left: 0;*/
+  /*}*/
+
+  /*.key-item-title {*/
+    /*font-size: 14px;*/
+  /*}*/
+  /*.key-item-table {*/
+    /*font-size: 10px;*/
+  /*}*/
   .divs-2 div,
   .divs-1 div {
     line-height: 22px;

@@ -7,7 +7,7 @@
 }
 
 .calendar-content * {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -43,9 +43,30 @@
     width: 100%;
 }
 
+/*.sidebar-item-title, .key-item-title {*/
+    /*font-size: 20px;*/
+    /*font-weight: bold;*/
+/*}*/
+/*$ringside: "Ringside Narrow A", "Ringside Narrow B", sans-serif;*/
+/*$vitesse: "Vitesse A", "Vitesse B", serif;*/
+
 .sidebar-item-title, .key-item-title {
-    font-size: 20px;
-    font-weight: bold;
+    color: #676767;
+    font-family: "Vitesse A", "Vitesse B", serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+@media screen and (min-width: 1024px) {
+    .sidebar-item-title, .key-item-title {
+        font-size: 16px;
+        line-height: 23px;
+    }
+}
+@media screen and (min-width: 1224px) {
+    .sidebar-item-title, .key-item-title {
+        font-size: 23px !important;
+        letter-spacing: .5px;
+    }
 }
 
 .accal-tooltip {
@@ -60,7 +81,7 @@
 }
 
 .accal-tooltip h3 {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     width: 100%;
     background-color: #99b2cc;
     font-size: 16px;
@@ -69,12 +90,12 @@
     padding: 2px 5px 2px 5px;
     box-sizing: border-box;
     color: #fff;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     font-weight: 300;
 }
 
 .accal-tooltip span {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     width: 100%;
     font-size: 16px;
     padding: 2px 5px 2px 5px;
@@ -84,7 +105,7 @@
 }
 
 .accal-tooltip > span > span {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     color: #666;
     font-size: 13px;
 }
@@ -233,9 +254,17 @@
 .cal-month {
     text-align: center;
     color: #fff;
-    background-color: #369;
-    font-weight: 300;
+    background-color: #002e5d;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
+@media screen and (min-width: 1224px) {
+    .cal-month {
+        font-size: 17px;
+    }
+}
+
 
 .cal-day {
     text-align: center;
@@ -245,12 +274,22 @@
     font-size: 14px;
     height: 32px;
 }
-
+/*   like v4  */
 .cal-date {
     text-align: center;
     overflow: hidden;
-    font-size: 18px;
+    font-size: 17px;
     height: 32px;
+}
+@media screen and (max-width: 1024px) {
+    .cal-date {
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .cal-date {
+        font-size: 12px;
+    }
 }
 
 .sidebar-item {
@@ -258,12 +297,12 @@
     width: 100%;
     text-align: center;
 }
-
-.key-item {
-    display: inline-block;
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
+/* these didn't exist in html*/
+/*.key-item {*/
+    /*display: inline-block;*/
+    /*margin-left: 20px;*/
+    /*margin-bottom: 20px;*/
+/*}*/
 
 .sidebar-item-table td {
     padding: 5px 10px;
@@ -292,11 +331,11 @@
     max-width: 1150px;
     margin: 0 auto;
 }
-
-.key-item td:first-child {
-    width: 24px;
-    vertical-align: text-top;
-}
+/* these didn't exist in html*/
+/*.key-item td:first-child {*/
+    /*width: 24px;*/
+    /*vertical-align: text-top;*/
+/*}*/
 
 td.cal-date.wntr-term, .wntr-term tr:nth-child(1) {
     border-top: 3px solid #ffdf80;
