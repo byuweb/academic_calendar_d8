@@ -1,4 +1,4 @@
-# Academic Calendar Module For Drupal 8
+# ***DEPRECATED*** Academic Calendar Module For Drupal 8
 
 This module generates a block that you can display on your websites. The module displays all academic calendar information and it can't be customized or limited to only certain academic calendar items.
 
