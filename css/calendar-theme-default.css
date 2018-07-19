@@ -64,7 +64,7 @@
 }
 @media screen and (min-width: 1224px) {
     .sidebar-item-title, .key-item-title {
-        font-size: 23px !important;
+        font-size: 21px !important;
         letter-spacing: .5px;
     }
 }
