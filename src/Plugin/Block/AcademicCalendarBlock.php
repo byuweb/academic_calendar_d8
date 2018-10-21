@@ -52,7 +52,7 @@ class AcademicCalendarBlock extends BlockBase {
             }
         }
         curl_close($ch);
-        $html .= "<a href=\"https://registrar.byu.edu/academic-calendar\" target=\"_blank\" id=\"academic-calendar-btn\"><div class=\"bold\">ACADEMIC</div>CALENDAR</a>";
+        $html .= "<a href=\"https://registrar.byu.edu/academic-calendar\" target=\"_blank\" id=\"academic-calendar-btn\">ACADEMIC CALENDAR</a>";
 
         return [
             '#type' => 'inline_template',
