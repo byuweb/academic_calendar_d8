@@ -47,12 +47,12 @@
     /*font-size: 20px;*/
     /*font-weight: bold;*/
 /*}*/
-/*$ringside: "Ringside Narrow A", "Ringside Narrow B", sans-serif;*/
-/*$vitesse: "Vitesse A", "Vitesse B", serif;*/
+/*$ringside: "HCo Ringside Narrow SSm", sans-serif;*/
+/*$vitesse: "HCo Ringside Narrow SSm", serif;*/
 
 .sidebar-item-title, .key-item-title {
     color: #676767;
-    font-family: "Vitesse A", "Vitesse B", serif;
+    font-family: "HCo Ringside Narrow SSm", serif;
     font-size: 16px;
     font-weight: 500;
 }
