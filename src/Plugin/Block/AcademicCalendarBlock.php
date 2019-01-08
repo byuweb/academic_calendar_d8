@@ -33,7 +33,7 @@ class AcademicCalendarBlock extends BlockBase {
         $html = "";
         for($y = $year - 2; $y <= $year + 1; $y++) {
             for($h = 1; $h <= 2; $h++) {
-                $url = "https://registrar.byu.edu/returnHTMLCalendar?year={$y}&half={$h}";
+                $url = "https://enrollment2.byu.edu/returnHTMLCalendar?year={$y}&half={$h}";
                 curl_setopt($ch, CURLOPT_URL, $url);
                 $json = curl_exec($ch);
                 $calArr = json_decode($json, true);
@@ -52,7 +52,7 @@ class AcademicCalendarBlock extends BlockBase {
             }
         }
         curl_close($ch);
-        $html .= "<a href=\"https://registrar.byu.edu/academic-calendar\" target=\"_blank\" id=\"academic-calendar-btn\">ACADEMIC CALENDAR</a>";
+        $html .= "<a href=\"https://enrollment2.byu.edu/academic-calendar\" target=\"_blank\" id=\"academic-calendar-btn\">ACADEMIC CALENDAR</a>";
 
         return [
             '#type' => 'inline_template',
