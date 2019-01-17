@@ -5,6 +5,7 @@
  */
 namespace Drupal\byu_academic_calendar\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Form\FormStateInterface;
 /**
  * Provides BYU Academic Calendar block.
  *
@@ -15,11 +16,41 @@ use Drupal\Core\Block\BlockBase;
  * )
  */
 class AcademicCalendarBlock extends BlockBase {
+    
+    /**
+     * {@inheritdoc}
+     */
+  
+    public function blockForm($form, FormStateInterface $formState) {
+        $config = $this->getConfiguration();
+
+        $form['academic_calendar_url'] = [
+          '#type' => 'textfield',
+          '#default_value' => isset($config['academic_calendar_url']) ? $config['academic_calendar_url'] : '',
+          '#title' => $this->t('Calendar URL'),
+          '#description' => $this->t('The URL from which the calendar is pulled without the query parameters.'),
+          '#required' => TRUE,
+        ];
+
+        return $form;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+
+    public function blockSubmit($form, FormStateInterface $formState) {
+        parent::blockSubmit($form, $formState);
+        $values = $formState->getValues();
+        $this->configuration['academic_calendar_url'] = $values['academic_calendar_url'];
+    }
 
     /**
      * {@inheritdoc}
      */
     public function build() {
+        $config = $this->getConfiguration();
+        $baseUrl = $config['academic_calendar_url'];
         $year = intval(date("Y"));
         $thisMonth = intval(date("m"));
 
@@ -33,7 +64,7 @@ class AcademicCalendarBlock extends BlockBase {
         $html = "";
         for($y = $year - 2; $y <= $year + 1; $y++) {
             for($h = 1; $h <= 2; $h++) {
-                $url = "https://enrollment2.byu.edu/returnHTMLCalendar?year={$y}&half={$h}";
+                $url = $baseUrl . "?year={$y}&half={$h}";
                 curl_setopt($ch, CURLOPT_URL, $url);
                 $json = curl_exec($ch);
                 $calArr = json_decode($json, true);
