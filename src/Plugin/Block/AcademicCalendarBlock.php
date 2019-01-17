@@ -25,11 +25,27 @@ class AcademicCalendarBlock extends BlockBase {
         $config = $this->getConfiguration();
 
         $form['academic_calendar_url'] = [
-          '#type' => 'textfield',
-          '#default_value' => isset($config['academic_calendar_url']) ? $config['academic_calendar_url'] : '',
-          '#title' => $this->t('Calendar URL'),
-          '#description' => $this->t('The URL from which the calendar is pulled without the query parameters.'),
-          '#required' => TRUE,
+            '#type' => 'textfield',
+            '#default_value' => isset($config['academic_calendar_url']) ? $config['academic_calendar_url'] : '',
+            '#title' => $this->t('Calendar URL'),
+            '#description' => $this->t('The URL from which the calendar is pulled without the query parameters.'),
+            '#required' => TRUE,
+        ];
+        
+        $form['academic_calendar_link_url'] = [
+            '#type' => 'textfield',
+            '#default_value' => isset($config['academic_calendar_link_url']) ? $config['academic_calendar_link_url'] : '',
+            '#title' => $this->t('Calendar Link URL'),
+            '#description' => $this->t('This is the URL the calendar uses for the link to the academic calendar website.'),
+            '#required' => TRUE,
+        ];
+
+        $form ['academic_calendar_link_title'] = [
+            '#type' => 'textfield',
+            '#default_value' => isset($config['academic_calendar_link_title']) ? $config['academic_calendar_link_title'] : 'ACADEMIC CALENDAR',
+            '#title' => $this->t('Calendar Link Title'),
+            '#description' => $this->t('Title on the link to the academic calendar site.'),
+            '#required' => TRUE,
         ];
 
         return $form;
@@ -43,6 +59,8 @@ class AcademicCalendarBlock extends BlockBase {
         parent::blockSubmit($form, $formState);
         $values = $formState->getValues();
         $this->configuration['academic_calendar_url'] = $values['academic_calendar_url'];
+        $this->configuration['academic_calendar_link_url'] = $values['academic_calendar_link_url'];
+        $this->configuration['academic_calendar_link_title'] = $values['academic_calendar_link_title'];
     }
 
     /**
@@ -50,7 +68,9 @@ class AcademicCalendarBlock extends BlockBase {
      */
     public function build() {
         $config = $this->getConfiguration();
-        $baseUrl = $config['academic_calendar_url'];
+        $basePullUrl = $config['academic_calendar_pull_url'];
+        $linkUrl = $config['academic_calendar_link_url'];
+        $linkTitle = $config['academic_calendar_link_title'];
         $year = intval(date("Y"));
         $thisMonth = intval(date("m"));
 
@@ -64,7 +84,7 @@ class AcademicCalendarBlock extends BlockBase {
         $html = "";
         for($y = $year - 2; $y <= $year + 1; $y++) {
             for($h = 1; $h <= 2; $h++) {
-                $url = $baseUrl . "?year={$y}&half={$h}";
+                $url = $basePullUrl . "?year={$y}&half={$h}";
                 curl_setopt($ch, CURLOPT_URL, $url);
                 $json = curl_exec($ch);
                 $calArr = json_decode($json, true);
@@ -83,7 +103,7 @@ class AcademicCalendarBlock extends BlockBase {
             }
         }
         curl_close($ch);
-        $html .= "<a href=\"https://enrollment2.byu.edu/academic-calendar\" target=\"_blank\" id=\"academic-calendar-btn\">ACADEMIC CALENDAR</a>";
+        $html .= "<a href=\"" . $linkUrl . "\" target=\"_blank\" id=\"academic-calendar-btn\">" . $linkTitle . "</a>";
 
         return [
             '#type' => 'inline_template',
