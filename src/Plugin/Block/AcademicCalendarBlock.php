@@ -16,11 +16,11 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class AcademicCalendarBlock extends BlockBase {
-    
+
     /**
      * {@inheritdoc}
      */
-  
+
     public function blockForm($form, FormStateInterface $formState) {
         $config = $this->getConfiguration();
 
@@ -31,7 +31,7 @@ class AcademicCalendarBlock extends BlockBase {
             '#description' => $this->t('The URL from which the calendar is pulled without the query parameters.'),
             '#required' => TRUE,
         ];
-        
+
         $form['academic_calendar_link_url'] = [
             '#type' => 'textfield',
             '#default_value' => isset($config['academic_calendar_link_url']) ? $config['academic_calendar_link_url'] : '',
@@ -68,7 +68,7 @@ class AcademicCalendarBlock extends BlockBase {
      */
     public function build() {
         $config = $this->getConfiguration();
-        $basePullUrl = $config['academic_calendar_pull_url'];
+        $basePullUrl = $config['academic_calendar_url'];
         $linkUrl = $config['academic_calendar_link_url'];
         $linkTitle = $config['academic_calendar_link_title'];
         $year = intval(date("Y"));
